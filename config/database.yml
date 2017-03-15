@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  username: root
+  password:
+  socket: /opt/lampp/var/mysql/mysql.sock
+
+development:
+  <<: *default
+  database: easy_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: easy_test
+
+production:
+  <<: *default
+  database: easy_production
