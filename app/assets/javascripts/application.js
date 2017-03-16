@@ -12,5 +12,39 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
 //= require_tree .
+
+$(document).ready(function(){
+  // var navoffeset=$(".agileits_header").offset().top;
+  //  $(window).scroll(function(){
+  //   var scrollpos=$(window).scrollTop();
+  //   if(scrollpos >=navoffeset){
+  //     $(".agileits_header").addClass("fixed");
+  //   }else{
+  //     $(".agileits_header").removeClass("fixed");
+  //   }
+  //  });
+
+  $(".dropdown").hover(
+    function() {
+        $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+        $(this).toggleClass('open');
+    },
+    function() {
+        $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+        $(this).toggleClass('open');
+    }
+  );
+
+  // paypal.minicart.render({
+  //   action: '#'
+  // });
+
+  // if (~window.location.search.indexOf('reset=true')) {
+  //   paypal.minicart.reset();
+  // }
+});
