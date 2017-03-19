@@ -34,7 +34,6 @@ gem "jbuilder", "~> 2.5"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
-gem "i18n-js", ">= 3.0.0.rc11"
 gem "ransack"
 gem "font-awesome-rails"
 
@@ -80,6 +79,7 @@ gem "cancancan"
 gem "enum_help"
 gem "paranoia"
 gem "sinatra", github: "sinatra/sinatra", branch: "master"
+gem "date_validator"
 
 source "https://rails-assets.org/" do
   gem "rails-assets-adminlte"

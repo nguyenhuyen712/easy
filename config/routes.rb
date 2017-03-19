@@ -5,4 +5,10 @@ Rails.application.routes.draw do
 
   root "pages#index"
 
+  namespace :admin do
+    root "pages#index"
+    resources :categories
+    resources :restaurant_categories
+    resources :food_categories
+  end
 end
