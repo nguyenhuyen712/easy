@@ -1,0 +1,23 @@
+vi:
+  activerecord:
+    attributes:
+      user:
+        email: Địa chỉ email
+        current_password: mật khẩu hiện tại
+        password: Mật khẩu
+        password_confirmation: Mật khẩu xác thực
+        confirmation_token: confirmation token
+        new_password: mật khẩu mới
+        phone: Điện thoại
+        address: Địa chỉ
+        name: Tên
+    models:
+      user: người dùng
+    errors:
+      messages:
+        blank: không được để trống
+        invalid: không hợp lệ
+        taken: đã tồn tại
+        confirmation: không chính xác
+        too_short: quá ngắn (ít nhất %{count} ký tự)
+        too_long: quá dài (nhiều nhất %{count} ký tự)
