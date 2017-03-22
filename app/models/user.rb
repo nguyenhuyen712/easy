@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :favorite_restaurants, dependent: :destroy
-  has_one :restaurant
+  has_one :restaurant, foreign_key: :manager_id
 
   validates :email, presence: true, length: {maximum: 128}
   validates :name, presence: true, length: {maximum: 128}

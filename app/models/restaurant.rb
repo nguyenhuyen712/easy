@@ -7,10 +7,10 @@ class Restaurant < ApplicationRecord
   has_many :restaurant_categories, dependent: :destroy
   has_many :bills
   belongs_to :slideshow
-  belongs_to :user
+  belongs_to :manager, class_name: "User"
 
   enum status: [:opening, :closed]
 
-  scope :hot_restaurant, ->{order(order_count: :desc)}
-  scope :order_desc, ->{order(created_at: :desc)}
+  scope :hot_restaurant, ->{order order_count: :desc}
+  scope :order_desc, ->{order created_at: :desc}
 end
