@@ -11,8 +11,12 @@ vi:
         phone: Điện thoại
         address: Địa chỉ
         name: Tên
+      category:
+        name: Tên danh mục
+        category_type: Loại danh mục
     models:
       user: người dùng
+      category: Danh mục
     errors:
       messages:
         blank: không được để trống

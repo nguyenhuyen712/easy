@@ -79,8 +79,4 @@ gem "cancancan"
 gem "enum_help"
 gem "paranoia"
 gem "sinatra", github: "sinatra/sinatra", branch: "master"
-gem "date_validator"
-
-source "https://rails-assets.org/" do
-  gem "rails-assets-adminlte"
-end
+gem 'jquery-datatables-rails'

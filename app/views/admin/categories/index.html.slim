@@ -1,0 +1,62 @@
+#myModal.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4#myModalLabel.modal-title Thêm mới danh mục
+      = form_for [:admin, Category.new] do |f|
+        .modal-body
+          = f.label :name
+          = f.text_field :name, class: "form-control", placeholder: "Tên danh mục", required: true
+          = f.label :category_type
+          = f.select :category_type, {"Nhà hàng": :restaurant , "Món ăn": :food}, {}, class: "form-control"
+        .modal-footer
+          button.btn.btn-default data-dismiss="modal" type="button"  Bỏ qua
+          = f.submit "Thêm", class: "btn btn-primary"
+
+h1 Quản lý danh mục
+button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#myModal"
+  | Thêm mới danh mục
+.row
+  .col-xs-12
+    .box
+      .box-header
+        h3.box-title Danh mục nhà hàng
+      .box-body
+        table.table.table-bordered.table-hover
+          thead
+            tr
+              th Số thứ tự
+              th Tên danh mục
+              th Số lượng nhà hàng
+              th Thao tác
+          tbody
+            - @categories.restaurant.order(created_at: :desc).each_with_index do |category, index|
+              tr
+                td= index + 1
+                td= category.name
+                td= category.restaurant_categories.size
+                td
+                  = link_to "Sửa"
+                  | &nbsp&nbsp
+                  = link_to "Xóa"
+  .col-xs-12
+    .box
+      .box-header
+        h3.box-title Danh mục món ăn
+      .box-body
+        table.table.table-bordered.table-hover
+          thead
+            tr
+              th Số thứ tự
+              th Tên danh mục
+              th Số lượng nhà hàng
+              th
+          tbody
+            - @categories.food.order(created_at: :desc).each_with_index do |category, index|
+              tr
+                td= index + 1
+                td= category.name
+                td= category.restaurant_categories.size
+                td

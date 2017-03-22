@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require bootstrap
-//= require adminlte
+//= require dataTables/jquery.dataTables
 //= require_tree .
 
 $(document).ready(function(){
@@ -27,4 +29,36 @@ $(document).ready(function(){
         $(this).toggleClass('open');
     }
   );
+
+  $(function () {
+    // $("#example1").DataTable();
+    // $('#example2').DataTable({
+    //   "paging": true,
+    //   "lengthChange": false,
+    //   "searching": false,
+    //   "ordering": true,
+    //   "info": true,
+    //   "autoWidth": false
+    // });
+
+    $(".table").DataTable({
+      "language": {
+        "sProcessing":   "Đang xử lý...",
+        "sLengthMenu":   "Xem _MENU_ mục",
+        "sZeroRecords":  "Không tìm thấy dòng nào phù hợp",
+        "sInfo":         "Đang xem _START_ đến _END_ trong tổng số _TOTAL_ mục",
+        "sInfoEmpty":    "Đang xem 0 đến 0 trong tổng số 0 mục",
+        "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+        "sInfoPostFix":  "",
+        "sSearch":       "Tìm:",
+        "sUrl":          "",
+        "oPaginate": {
+          "sFirst":    "Đầu",
+          "sPrevious": "Trước",
+          "sNext":     "Tiếp",
+          "sLast":     "Cuối"
+        }
+      }
+    });
+  });
 });

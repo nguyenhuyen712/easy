@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
-    title App
+    title Admin| Buy online
     = csrf_meta_tags
     = stylesheet_link_tag "admin/application", media: "all"
     = javascript_include_tag "application"
@@ -18,7 +18,7 @@ html
         header.main-header
           strong= link_to admin_root_path, class: "logo" do
             span.logo-mini BO
-            span.logo-lg Buy Oline Admin
+            span.logo-lg Buy Online Admin
           nav.navbar.navbar-static-top
             a.sidebar-toggle-admin data-toggle="offcanvas" href="#"
               span#main_icon.glyphicon.glyphicon-align-justify
@@ -42,7 +42,7 @@ html
               li= link_to "#" do
                 i.fa.fa-cutlery
                 span Nhà hàng
-              li= link_to "#" do
+              li= link_to admin_categories_path do
                 i.fa.fa-tags
                 span Danh mục
               li= link_to "#" do
@@ -50,9 +50,8 @@ html
                 span Slideshow
         .content-wrapper
           section.content.yield-box
-            .row
-              = render "layouts/flash_message"
-              = yield
+            = render "layouts/flash_message"
+            = yield
   - else
     body.login-page
       .content
