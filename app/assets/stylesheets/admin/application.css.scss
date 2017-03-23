@@ -1,6 +1,10 @@
+/*
+ *= require_self
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require_tree .
+ */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "adminlte";
-@import "lib/skin-purple";
 @import "font-awesome";
-@import "custom";
+@import "lib/skin-purple"
