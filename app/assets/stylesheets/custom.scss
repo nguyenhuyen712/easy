@@ -18,3 +18,105 @@
 .container-body {
   min-height: 350px;
 }
+
+.menu {
+  a:hover {
+    cursor: pointer;
+  }
+}
+
+.hot-restaurant {
+  padding-right: 30px;
+}
+
+.box-hot-restaurant:hover {
+  box-shadow: 2px 2px 20px #555;
+}
+
+.image-hot-restaurant {
+  line-height: 0;
+
+  img {
+    width: 100%;
+    display: block;
+    height: 200px;
+  }
+}
+
+.info-basic-hot-restaurant {
+  .name-hot-restaurant {
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap;
+    margin-top: 15px;
+    a {
+      color: #c00;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .restaurant-address {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .restaurant-order-count {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+}
+
+.list-new-restaurant {
+  margin-top: 30px;
+}
+
+.new-restaurant {
+  margin: 15px;
+  border: 1px solid #ddd;
+
+  .image {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 30px;
+    background: #f7fcfc;
+    border-radius: 3px 3px 0 0;
+
+    img {
+      width: 100%;
+      display: block;
+      height: 150px;
+    }
+  }
+
+  .info-basic-new-restaurant {
+    padding: 15px;
+    line-height: 1.2;
+
+    h4 {
+      font-weight: bold;
+      margin-bottom: 10px;
+
+      a {
+        color: #c00;
+      }
+    }
+
+    .restaurant-address {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .restautant-time {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+}
+
+.new-restaurant:hover {
+  box-shadow: 2px 2px 20px #c00;
+}

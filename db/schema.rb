@@ -138,13 +138,14 @@ ActiveRecord::Schema.define(version: 20170319094706) do
     t.string   "price_zone"
     t.integer  "manager"
     t.integer  "status"
-    t.time     "open_time"
-    t.time     "close_time"
+    t.string   "open_time"
+    t.string   "close_time"
     t.integer  "order_count"
     t.integer  "free_delivery"
     t.integer  "delivery_fee"
     t.string   "website"
     t.string   "email"
+    t.string   "url_avatar"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

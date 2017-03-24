@@ -6,21 +6,18 @@
           span
             | Buy
           |  Online
-    .w3ls_logo_products_left1
+    .w3ls_logo_products_left1.menu
       ul.special_items
         li
-          a
-            | Chọn nhà hàng
+          = link_to t(".select_restaurant"), "#"
           i
             | /
         li
-          a
-            | Đơn hàng
+          = link_to t(".bill"), "#"
           i
             | /
         li
-          a
-            | Nhà hàng của tôi
+          = link_to t(".register_restaurant"), "#"
     / .w3ls_logo_products_left1
     /   ul.phone_email
     /     li
