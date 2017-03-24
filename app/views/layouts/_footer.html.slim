@@ -8,8 +8,7 @@
           a[href="events.html"]
             | Events
         li
-          a[href="about.html"]
-            | About Us
+          = link_to t(".about_us"), "/about"
         li
           a[href="products.html"]
             | Best Deals
@@ -92,20 +91,14 @@
             | connect with us
           ul.agileits_social_icons
             li
-              a.facebook[href="#"]
+              = link_to Settings.facebook_fanpage, target: :_blank do
                 i.fa.fa-facebook[aria-hidden="true"]
             li
-              a.twitter[href="#"]
-                i.fa.fa-twitter[aria-hidden="true"]
-            li
-              a.google[href="#"]
+              = mail_to Settings.email_contact
                 i.fa.fa-google-plus[aria-hidden="true"]
             li
-              a.instagram[href="#"]
+              = link_to Settings.instagram_fanpage, target: :_blank do
                 i.fa.fa-instagram[aria-hidden="true"]
-            li
-              a.dribbble[href="#"]
-                i.fa.fa-dribbble[aria-hidden="true"]
       .clearfix
 
     .wthree_footer_copy
