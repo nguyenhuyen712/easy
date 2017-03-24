@@ -36,6 +36,7 @@ gem "jbuilder", "~> 2.5"
 # gem "capistrano-rails", group: :development
 gem "ransack"
 gem "font-awesome-rails"
+gem "settingslogic"
 
 group :development, :staging do
   gem "faker"
@@ -79,4 +80,4 @@ gem "cancancan"
 gem "enum_help"
 gem "paranoia"
 gem "sinatra", github: "sinatra/sinatra", branch: "master"
-gem 'jquery-datatables-rails'
+gem "jquery-datatables-rails"
