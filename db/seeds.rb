@@ -4,7 +4,6 @@ Admin.create email: "admin@gmail.com", password: 123456, password_confirmation: 
   category = Category.create name: "category #{i+1}", category_type: :restaurant
   9.times do |j|
     Restaurant.create name: "restaurant #{i}#{j+1}",
-      code: "R#{i}#{j+1}",
       address: Faker::Address.street_address,
       phone: Faker::PhoneNumber.cell_phone,
       open_time: "08:00",

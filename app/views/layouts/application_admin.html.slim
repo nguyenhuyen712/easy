@@ -6,6 +6,7 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag "admin/application", media: "all"
     = javascript_include_tag "application"
+    script src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"
 
     /! HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     /! WARNING: Respond.js doesn't work if you view the page via file://
@@ -39,7 +40,7 @@ html
               li= link_to "#" do
                 i.fa.fa-user
                 span Thành viên
-              li= link_to "#" do
+              li= link_to admin_restaurants_path do
                 i.fa.fa-cutlery
                 span Nhà hàng
               li= link_to admin_categories_path do

@@ -1,10 +1,17 @@
 /*
  *= require_self
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require select2
+ *= require select2-bootstrap
  *= require_tree .
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-@import "lib/skin-purple"
+@import "lib/skin-purple";
+@import "lib/bootstrap-select.scss";
+
+.no-padding {
+  padding: 0 !important;
+}
