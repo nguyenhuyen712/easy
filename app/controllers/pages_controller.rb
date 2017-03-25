@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   def index
+    @hot_restaurant = Restaurant.opening.hot_restaurant.opening.limit(4)
+    @new_restaurant = Restaurant.opening.order_desc.limit(8)
   end
 
   def show

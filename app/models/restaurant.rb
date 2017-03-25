@@ -8,4 +8,9 @@ class Restaurant < ApplicationRecord
   has_many :bills
   belongs_to :slideshow
   belongs_to :user
+
+  enum status: [:opening, :closed]
+
+  scope :hot_restaurant, ->{order(order_count: :desc)}
+  scope :order_desc, ->{order(created_at: :desc)}
 end

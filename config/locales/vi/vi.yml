@@ -25,3 +25,13 @@ vi:
         confirmation: không chính xác
         too_short: quá ngắn (ít nhất %{count} ký tự)
         too_long: quá dài (nhiều nhất %{count} ký tự)
+  pages:
+    index:
+      hot_restaurant: Nhà hàng nổi bật
+      order_count: "Số lần đặt hàng: %{order_count} lần"
+      new_restaurant: Nhà hàng mới
+  layouts:
+    header_menu:
+      register_restaurant: Đăng ký nhà hàng
+      bill: Tra cứu đơn hàng
+      select_restaurant: Chọn nhà hàng
