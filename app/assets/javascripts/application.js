@@ -16,9 +16,13 @@
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require bootstrap
 //= require dataTables/jquery.dataTables
+//= require select2-full
+//= require select2_locale_vi
 //= require_tree .
 
 $(document).ready(function(){
+  $(".select2").select2();
+
   $(".dropdown").hover(
     function() {
         $('.dropdown-menu', this).stop( true, true ).slideDown("fast");

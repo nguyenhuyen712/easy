@@ -132,22 +132,25 @@ ActiveRecord::Schema.define(version: 20170319094706) do
 
   create_table "restaurants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "code"
     t.string   "address"
     t.string   "phone"
-    t.string   "price_zone"
+    t.integer  "min_price"
+    t.integer  "max_price"
     t.integer  "manager_id"
     t.integer  "status"
     t.string   "open_time"
     t.string   "close_time"
     t.integer  "order_count"
-    t.integer  "free_delivery"
+    t.integer  "free_delivery_fee"
     t.integer  "delivery_fee"
     t.string   "website"
     t.string   "email"
     t.string   "url_avatar"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.float    "lat",               limit: 24
+    t.float    "long",              limit: 24
+    t.text     "description",       limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "slideshows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

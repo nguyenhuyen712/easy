@@ -1,0 +1,6 @@
+- if object.errors.any?
+  #error_explanation
+    .alert.alert-danger Có #{object.errors.count} lỗi xảy ra
+    ul
+      - object.errors.full_messages.each do |msg|
+        li= msg

@@ -14,9 +14,26 @@ vi:
       category:
         name: Tên danh mục
         category_type: Loại danh mục
+      restaurant:
+        name: Tên nhà hàng
+        address: Địa chỉ
+        phone: Số điện thoại
+        price_zone: Khoảng gía
+        open_time: Giờ mở cửa
+        close_time: Giờ đóng cửa
+        free_delivery_fee: Chi phí tối thiểu giao hàng miễn phí
+        delivery_fee: Chi phí giao hàng
+        website: Trang web
+        email: Địa chỉ email
+        url_avatar: Ảnh đại diện
+        description: Mô tả nhà hàng
+        min_price: Gía thấp nhất
+        max_price: Gía lớn nhất
     models:
       user: người dùng
       category: Danh mục
+      restaurant: Nhà hàng
+      restaurant_category: Danh mục nhà hàng
     errors:
       messages:
         blank: không được để trống

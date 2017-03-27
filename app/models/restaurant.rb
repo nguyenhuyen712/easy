@@ -13,4 +13,8 @@ class Restaurant < ApplicationRecord
 
   scope :hot_restaurant, ->{order order_count: :desc}
   scope :order_desc, ->{order created_at: :desc}
+
+  # validates :name, :address, presence: true, length: {maximum: 128}
+  # validates :name, :address, :min_price, :max_price, :open_time, :close_time,
+  #   :free_delivery_fee, :delivery_fee, presence: true
 end

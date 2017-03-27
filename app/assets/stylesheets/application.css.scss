@@ -18,3 +18,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "custom";
+
+.no-padding {
+  padding: 0 !important;
+}
