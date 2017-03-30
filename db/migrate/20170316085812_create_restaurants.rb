@@ -19,6 +19,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.0]
       t.float :lat
       t.float :long
       t.text :description
+      t.integer :min_order
 
       t.timestamps
     end

@@ -9,7 +9,7 @@
     .w3ls_logo_products_left1.menu
       ul.special_items
         li
-          = link_to t(".select_restaurant"), "#"
+          = link_to t(".select_restaurant"), restaurants_path
           i
             | /
         li
@@ -18,6 +18,10 @@
             | /
         li
           = link_to t(".register_restaurant"), "#"
+          i
+            | /
+        li
+          = link_to t(".about_us"), "/about"
     / .w3ls_logo_products_left1
     /   ul.phone_email
     /     li

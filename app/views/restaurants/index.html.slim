@@ -1,0 +1,46 @@
+.section
+  .container
+    .row
+      .col-sm-5.col-md-3
+        .list-category-sidebar
+          .w3l_fresh_vegetables_grid.w3l_fresh_vegetables_grid_left
+            ul
+              li
+                i.fa.fa-check aria-hidden="true"
+                = link_to "Tất cả", restaurants_path
+              - @category.each do |category|
+                li
+                  i.fa.fa-check aria-hidden="true"
+                  = link_to category.name, restaurants_path(category_id: category.id)
+        .sidebar-module.mb-40.mt-40
+          .sidebar-title
+            | Nhà hàng nổi bật
+          .hot-restaurants
+            - @hot_restaurant_name.each do |restaurant_name|
+              = link_to restaurant_name, "#"
+      .col-sm-7.col-md-9
+        .company-detail-wrapper
+          .filter-wrapper
+          .restaurant-list-wrapper
+            - @restaurants.each do |restaurant|
+              .restaurant-item-list
+                .col-md-2.image
+                  = image_tag restaurant.url_avatar unless restaurant.url_avatar.blank?
+                .col-md-10.restaurant-content
+                  .row
+                    .col-sm-7.col-md-8
+                      h4= restaurant.name
+                      .meta-div= restaurant.address
+                      p.texing= restaurant.description
+                    .col-sm-5.col-md-4
+                      ul.meta-list
+                        li
+                          span Giờ mở cửa:
+                          = "#{restaurant.open_time} ~ #{restaurant.close_time}"
+                        li
+                          span Đặt tối thiểu:
+                          = number_to_currency restaurant.min_order
+                      = link_to "Đặt hàng", "#", class: "btn btn-primary"
+                .clearfix
+        .paper-wrapper
+          .page-list= paginate @restaurants

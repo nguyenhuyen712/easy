@@ -2,6 +2,12 @@ defaults: &defaults
   facebook_fanpage: https://www.facebook.com/buyonline.DGD
   instagram_fanpage: https://www.instagram.com/buyonline.DGD
   email_contact: buyonline.dgd@gmail.com
+  restaurants:
+    hot_restaurant_limit: 10
+    page_size: 10
+  pages:
+    new_restaurant_limit: 8
+    hot_restaurant_limit: 4
 
 development:
   <<: *defaults

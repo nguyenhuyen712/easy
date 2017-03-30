@@ -1,0 +1,139 @@
+.section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .list-category-sidebar {
+    background-color: #f5f5f5;
+    border: 1px solid #e6e6e6;
+    padding: 20px 30px 40px;
+    padding-top: 40px;
+    weight: 50px;
+  }
+
+  .sidebar-module {
+    padding: 0 0 40px;
+
+    .sidebar-title {
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 0;
+    }
+
+    .hot-restaurants {
+      font-size: 12px;
+      margin-top: 15px;
+
+      a {
+        margin: 2px;
+        padding: 5px 10px;
+        color: #939393;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        display: inline-block;
+        line-height: 1;
+        font-weight: 400;
+      }
+
+      a:hover {
+        color: #c00;
+        border: 1px solid #c00;
+      }
+    }
+  }
+
+  .company-detail-wrapper {
+    margin-top: -10px;
+
+    .filter-wrapper {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    .restaurant-list-wrapper {
+      .restaurant-item-list {
+        position: relative;
+        padding: 10px 0;
+        line-height: 19px;
+        background: #edf2f2;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+
+        .image {
+          width: 140px;
+
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+
+        .restaurant-content {
+          border-left: 1px solid #e3e3e3;
+          border-radius: 3px;
+          padding-left: 20px;
+
+          .meta-div {
+            margin: 10px 0 20px;
+            font-size: 15px;
+            font-weight: bold;
+          }
+
+          .texing {
+            font-size: 13px;
+          }
+
+          .meta-list {
+            list-style: none;
+            margin: 10px;
+            li {
+              margin-bottom: 5px;
+              span {
+                font-weight: bold;
+                margin-right: 5px;
+              }
+            }
+          }
+
+          .btn-primary {
+            margin-left: 10px;
+            margin-top: 30px;
+            background: #d45742;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+
+  .paper-wrapper {
+    margin-top: 30px;
+
+    .page-list {
+      text-align: center;
+
+      span {
+        display: inline-block;
+        margin: 0 3px;
+        a {
+          background: #edf2f2;
+          height: 28px;
+          line-height: 24px;
+          padding: 0 10px;
+          text-align: center;
+          display: block;
+          border: 2px solid #edf2f2;
+          border-radius: 3px;
+          color: #5D5D5D;
+        }
+
+        a:hover {
+          color: #fff;
+          background: #e7604a;
+          border-color: #e7604a;
+        }
+      }
+    }
+  }
+}
