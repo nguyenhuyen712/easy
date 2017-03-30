@@ -1,2 +1,2 @@
 # Ứng dụng đặt món ăn trực tuyến
-Frameword: Ruby on rails
+Framework: Ruby on rails
