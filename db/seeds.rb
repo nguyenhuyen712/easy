@@ -10,7 +10,11 @@ Admin.create email: "admin@gmail.com", password: 123456, password_confirmation: 
       close_time: "20:00",
       url_avatar: Faker::Avatar.image,
       status: "opening",
-      order_count: "#{i*10 + j}"
+      order_count: "#{i*10 + j}",
+      description: Faker::Hipster.paragraph(3, true),
+      min_order: 50000,
+      min_price: 20000,
+      max_price: 100000
   end
 end
 
@@ -23,7 +27,7 @@ User.create email: "nguyenmyhuyen@gmail.com",
   password_confirmation: 123456,
   phone: "0123456789",
   address: "Ha noi",
-  name: "Nguyễn Mỹ Huền",
+  name: "Nguyễn Mỹ Huyền",
   confirmed_at: Time.now
 
 User.create email: "dogiadat@gmail.com",

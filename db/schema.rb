@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20170319094706) do
     t.float    "lat",               limit: 24
     t.float    "long",              limit: 24
     t.text     "description",       limit: 65535
+    t.integer  "min_order"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end

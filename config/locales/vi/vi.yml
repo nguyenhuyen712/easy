@@ -52,7 +52,25 @@ vi:
       register_restaurant: Đăng ký nhà hàng
       bill: Tra cứu đơn hàng
       select_restaurant: Chọn nhà hàng
+      about_us: Liên hệ
   helpers:
     submit:
       create: "Thêm mới"
       update: "Cập nhật"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%n %u"
+        precision: 0
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "VND"
