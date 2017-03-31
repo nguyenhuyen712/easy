@@ -9,6 +9,8 @@ class Restaurant < ApplicationRecord
   belongs_to :slideshow
   belongs_to :manager, class_name: "User"
 
+  mount_uploader :url_avatar, ImageUploader
+
   enum status: [:opening, :closed]
 
   scope :hot_restaurant, ->{order order_count: :desc}

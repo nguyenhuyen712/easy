@@ -29,6 +29,7 @@ vi:
         description: Mô tả nhà hàng
         min_price: Gía thấp nhất
         max_price: Gía lớn nhất
+        manager_id: Quản lý nhà hàng
     models:
       user: người dùng
       category: Danh mục
