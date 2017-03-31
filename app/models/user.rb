@@ -12,4 +12,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 128}
   validates :address, presence: true, length: {maximum: 128}
   validates :phone, format: {with: /\A(?:\+?\d{1,3}\s*-?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{4}\z/}
+
+  scope :has_restaurant, ->{joins :restaurant}
+  scope :has_no_restaurant, ->{where.not id: User.has_restaurant}
 end

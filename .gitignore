@@ -22,3 +22,4 @@
 spec/
 config/database.yml
 .env
+public/uploads/
