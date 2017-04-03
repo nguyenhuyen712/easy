@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   end
 
   namespace :manager do
+    root "foods#index"
     resources :restaurants
+    resources :foods
   end
 
   resources :restaurants
