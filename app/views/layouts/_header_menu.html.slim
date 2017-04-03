@@ -17,8 +17,8 @@
           i
             | /
         li
-          - if current_user.restaurant && current_user.restaurant.opening?
-            = link_to "Quản lý nhà hàng"
+          - if user_signed_in? && current_user.restaurant && current_user.restaurant.opening?
+            = link_to "Quản lý nhà hàng", manager_root_path
           - else
             = link_to t(".register_restaurant"), new_restaurant_path
           i
