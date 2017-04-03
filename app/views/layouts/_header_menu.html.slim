@@ -17,7 +17,10 @@
           i
             | /
         li
-          = link_to t(".register_restaurant"), "#"
+          - if current_user.restaurant && current_user.restaurant.opening?
+            = link_to "Quản lý nhà hàng"
+          - else
+            = link_to t(".register_restaurant"), new_restaurant_path
           i
             | /
         li

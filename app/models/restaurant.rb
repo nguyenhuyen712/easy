@@ -11,7 +11,7 @@ class Restaurant < ApplicationRecord
 
   mount_uploader :url_avatar, ImageUploader
 
-  enum status: [:opening, :closed]
+  enum status: [:opening, :closed, :pending]
 
   scope :hot_restaurant, ->{order order_count: :desc}
   scope :order_desc, ->{order created_at: :desc}

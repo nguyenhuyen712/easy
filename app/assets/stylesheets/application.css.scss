@@ -12,6 +12,8 @@
  *
  *= require_self
  *= require font-awesome
+ *= require select2
+ *= require select2-bootstrap
  *= require_tree .
  */
 
@@ -19,7 +21,3 @@
 @import "bootstrap";
 @import "custom";
 @import "restaurants";
-
-.no-padding {
-  padding: 0 !important;
-}

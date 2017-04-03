@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     resources :restaurants
   end
 
-  resources :restaurants, only: :index
+  namespace :manager do
+    resources :restaurants
+  end
+
+  resources :restaurants
 
   get "/*page", to: "pages#show"
 end
