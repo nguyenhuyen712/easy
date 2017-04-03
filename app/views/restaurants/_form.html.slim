@@ -1,4 +1,4 @@
-= form_for [:admin, @restaurant], html: {multipart: true} do |f|
+= form_for @restaurant, html: {multipart: true} do |f|
   .row
     .col-xs-12
       = render "shared/error_messages", object: @restaurant
@@ -7,16 +7,10 @@
     .col-xs-8= f.text_field :name, class: "form-control"
   br
   .row
-    .col-xs-4= f.label :manager_id
-    .col-xs-8= f.select :manager_id, @restaurant_for_select, {include_blank: true},
-      data: {placeholder: "Chọn quản lý"}, class: "form-control select2"
-  br
-  .row
     .col-xs-4= label_tag :restaurant_categories, "Danh mục nhà hàng"
     .col-xs-8= select_tag :restaurant_categories, options_for_select(Category.restaurant.pluck(:name, :id), @restaurant.restaurant_categories.pluck(:category_id)),
       data: {placeholder: "Chọn danh mục nhà hàng"}, multiple: true, class: "form-control select2"
   br
-
   .row
     .col-xs-4= f.label :address
     .col-xs-8= f.text_field :address, class: "form-control", id: "restaurant-address"
@@ -34,9 +28,9 @@
   .row
     .col-xs-4= f.label :min_price, "Khoảng gía (đơn vị: đồng)"
     .col-xs-1.no-padding.text-center Từ
-    .col-xs-2.no-padding= f.text_field :min_price, class: "form-control"
+    .col-xs-2.no-padding= f.number_field :min_price, step: 1000, class: "form-control"
     .col-xs-1.no-padding.text-center Đến
-    .col-xs-2.no-padding= f.text_field :max_price, class: "form-control"
+    .col-xs-2.no-padding= f.number_field :max_price, step: 1000, class: "form-control"
   br
   .row
     .col-xs-4= f.label :open_time, "Thời gian giao hàng"

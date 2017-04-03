@@ -1,0 +1,17 @@
+.section
+  .container
+    .row
+      .col-xs-12
+        h2.text-center Đăng ký nhà hàng
+      .col-md-8.col-md-offset-2
+        br
+        br
+        - if user_signed_in?
+          - if current_user.restaurant && current_user.restaurant.pending?
+            span style="color:red" Nhà hàng của bạn đang chờ quản trị viên duyệt, trong thời gian này bạn có thể chỉnh sửa thông tin nhà hàng
+            br
+            br
+          = render "form"
+        - else
+          | #{link_to "Đăng nhập", new_user_session_path} để tiếp tục
+

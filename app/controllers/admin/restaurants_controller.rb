@@ -41,9 +41,10 @@ class Admin::RestaurantsController < Admin::BaseController
 
   private
   def restaurant_params
+    params[:restaurant][:status] = :opening
     params.require(:restaurant).permit :name, :address, :lat, :long, :min_price,
       :max_price, :open_time, :close_time, :free_delivery_fee, :delivery_fee,
-      :url_avatar, :description, :manager_id
+      :url_avatar, :description, :manager_id, :status, :phone
   end
 
   def restaurant_for_select
