@@ -29,7 +29,7 @@ class Admin::RestaurantsController < Admin::BaseController
       (params[:restaurant_categories] || []).each do |category_id|
         @restaurant.restaurant_categories.find_or_create_by category_id: category_id
       end
-      flash[:success] = "Nhà hàng đưọc thêm cập nhật thành công"
+      flash[:success] = "Nhà hàng đưọc cập nhật thành công"
       redirect_to admin_restaurants_path
     else
       render :edit
