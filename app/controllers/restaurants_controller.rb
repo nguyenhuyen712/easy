@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @restaurant = current_user.restaurant if current_user.restaurant
+    @restaurant = current_user.restaurant if current_user && current_user.restaurant
   end
 
   def create

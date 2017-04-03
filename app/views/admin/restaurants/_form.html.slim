@@ -47,11 +47,11 @@
   br
   .row
     .col-xs-4= f.label :free_delivery_fee
-    .col-xs-4= f.number_field :free_delivery_fee, step: 1000, class: "form-control"
+    .col-xs-4= f.number_field :free_delivery_fee, step: 1000, min: 0, class: "form-control"
   br
   .row
     .col-xs-4= f.label :delivery_fee, "Chi phí giao hàng (/1km)"
-    .col-xs-4= f.number_field :delivery_fee, step: 1000, class: "form-control"
+    .col-xs-4= f.number_field :delivery_fee, step: 1000, min: 0, class: "form-control"
   br
   .row
     .col-xs-4= f.label :description

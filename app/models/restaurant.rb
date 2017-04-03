@@ -17,7 +17,7 @@ class Restaurant < ApplicationRecord
   scope :order_desc, ->{order created_at: :desc}
   scope :filter_category, ->(category_id){joins(:restaurant_categories).where restaurant_categories: {category_id: category_id}}
 
-  validates :name, :address, presence: true, length: {maximum: 128}
-  validates :name, :address, :min_price, :max_price, :open_time, :close_time,
-    :free_delivery_fee, :delivery_fee, presence: true
+  # validates :name, :address, presence: true, length: {maximum: 128}
+  # validates :name, :address, :min_price, :max_price, :open_time, :close_time,
+  #   :free_delivery_fee, :delivery_fee, presence: true
 end

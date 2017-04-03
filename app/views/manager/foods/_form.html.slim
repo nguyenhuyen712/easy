@@ -1,0 +1,36 @@
+= form_for [:manager, @food], html: {multipart: true} do |f|
+  .row
+    .col-md-4.col-xs-12
+      h5 Chọn ảnh món ăn
+      = f.file_field :url_avatar, class: "imagefile"
+      br
+      br
+      #image-preview
+        = image_tag(@food.url_avatar, class: "thumb-image") if @food.url_avatar.present?
+    .col-md-8.col-xs-12
+      .row
+        .col-xs-5
+          = f.label :name
+        .col-xs-7
+          = f.text_field :name, class: "form-control"
+      br
+      .row
+        .col-xs-5
+          = f.label :category_id
+        .col-xs-7
+          = f.select :category_id, Category.food.pluck(:name, :id), {}, class: "form-control select2"
+      br
+      .row
+        .col-xs-5
+          = f.label :price
+        .col-xs-4
+          = f.number_field :price, step: 1000, min: 0, class: "form-control"
+      br
+      .row
+        .col-xs-5
+          = f.label :description
+        .col-xs-7
+          = f.text_area :description, class: "form-control", style: "resize: vertical;"
+      br
+    .col-md-12.text-center
+      = f.submit yield: :submit, class: "btn btn-primary btn-flat"
