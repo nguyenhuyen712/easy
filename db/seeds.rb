@@ -3,7 +3,7 @@ Admin.create email: "admin@gmail.com", password: 123456, password_confirmation: 
 10.times do |i|
   category = Category.create name: "category #{i+1}", category_type: :restaurant
   9.times do |j|
-    Restaurant.create name: "restaurant #{i}#{j+1}",
+    restaurant = Restaurant.create name: "restaurant #{i}#{j+1}",
       address: Faker::Address.street_address,
       phone: Faker::PhoneNumber.cell_phone,
       open_time: "08:00",
@@ -15,12 +15,19 @@ Admin.create email: "admin@gmail.com", password: 123456, password_confirmation: 
       min_order: 50000,
       min_price: 20000,
       max_price: 100000
+    10.times do |f|
+      category = Category.create name: "category-food #{f+1}", category_type: :food
+      Food.create name: "Food #{f+1}",
+        price: 20000,
+        restaurant_id: restaurant.id,
+        status: "sell",
+        url_avatar: Faker::Avatar.image,
+        category_id: category.id
+    end
   end
 end
 
-100.times do |i|
-  Category.create name: "category #{i+1}", category_type: :food
-end
+
 
 User.create email: "nguyenmyhuyen@gmail.com",
   password: 123456,

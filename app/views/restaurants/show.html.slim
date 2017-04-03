@@ -1,0 +1,73 @@
+.section
+  .container
+    .info-detail-restaurant
+      .image-restaurant.pull-left
+        = image_tag @restaurant.url_avatar unless @restaurant.url_avatar.blank?
+      .info-basic-restaurant.pull-left
+        .kind-restaurant
+          = convert_list_categories @restaurant.restaurant_categories
+        h1.name-restaurant= @restaurant.name
+        p
+          i.glyphicon.glyphicon-home
+          span.basic-content= @restaurant.address
+        p
+          i.glyphicon.glyphicon-phone-alt
+          span.basic-content= @restaurant.phone
+        p
+          i.glyphicon.glyphicon-time
+          span.basic-content= "#{@restaurant.open_time} ~ #{@restaurant.close_time}"
+          span.basic-content |
+          i.glyphicon.glyphicon-usd
+          span.basic-content= "#{number_to_currency @restaurant.min_price} ~ #{number_to_currency @restaurant.max_price}"
+        .info-delivery-restaurant
+          .col-xs-4.column-info-deli
+            p.uppercase.light-grey Phí vận chuyển
+            p= "#{number_to_currency @restaurant.delivery_fee}/km"
+          .col-xs-3.column-info-deli
+            p.uppercase.light-grey Đặt tối thiếu
+            p= number_to_currency @restaurant.min_order
+          .col-xs-5.column-info-deli
+            p.uppercase.light-grey Miễn phí vận chuyển
+            p= "Hóa đơn trên #{number_to_currency @restaurant.free_delivery_fee}"
+  .order-online
+    .container
+      .row
+        .col-xs-12
+          ul.nav.nav-tabs.nav-menu-tabs
+            li.active= link_to "Thực đơn", "#menu", "data-toggle": "tab"
+            li= link_to "Giới thiệu", "#restaurant_infomation", "data-toggle": "tab"
+            li= link_to "Khuyến mãi", "#promotion", "data-toggle": "tab"
+            li= link_to "Bình luận", "#comment", "data-toggle": "tab"
+          .tab-content
+            #menu.tab-pane.active
+              .row
+                .col-xs-3.col-md-2
+                  .category-food
+                    h5 Danh mục món ăn
+                    - @restaurant.foods.select(:category_id).distinct.each do |food_category|
+                      .food-detail
+                        i.fa.fa-check
+                        span= link_to food_category.category.name, "#"
+                      .clearfix
+                .col-xs-6.col-md-7
+                  .menu-food
+                    - @restaurant.foods.select(:category_id).distinct.each do |food_category|
+                      h5= food_category.category.name
+                      - @restaurant.foods.filter_category(food_category.category_id).each do |food|
+                        .order-menu-item
+                          .pull-left.img-food.col-xs-2= image_tag food.url_avatar
+                          .pull-left.name-food.col-xs-8
+                            h4= food.name
+                            span.desc= food.description
+                          .pull-right= link_to "#", class: "btn btn-primary" do
+                            span.price= food.price
+                            i.glyphicon.glyphicon-plus-sign
+                          .clearfix
+                .col-xs-3
+                  .side-block-order
+            #restaurant_infomation.tab-pane
+              | restaurant_infomation
+            #promotion.tab-pane
+              | promotion
+            #comment.tab-pane
+              | comment
