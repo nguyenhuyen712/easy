@@ -1,15 +1,10 @@
-= form_for [:admin, @restaurant], html: {multipart: true} do |f|
+= form_for [:manager, @restaurant], html: {multipart: true} do |f|
   .row
     .col-xs-12
       = render "shared/error_messages", object: @restaurant
   .row
     .col-xs-4= f.label :name
     .col-xs-8= f.text_field :name, class: "form-control"
-  br
-  .row
-    .col-xs-4= f.label :manager_id
-    .col-xs-8= f.select :manager_id, @restaurant_for_select, {include_blank: true},
-      data: {placeholder: "Chọn quản lý"}, class: "form-control select2"
   br
   .row
     .col-xs-4= label_tag :restaurant_categories, "Danh mục nhà hàng"
