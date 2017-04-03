@@ -42,7 +42,7 @@
                   = link_to "#" do
                     = image_tag restaurant.url_avatar
                 .info-basic-hot-restaurant
-                  h4.name-hot-restaurant= link_to restaurant.name, "#"
+                  h4.name-hot-restaurant= link_to restaurant.name, restaurant
                   .restaurant-address= restaurant.address
                   .restaurant-order-count
                     = t ".order_count", order_count: restaurant.order_count
@@ -58,6 +58,6 @@
               = link_to "#" do
                 = image_tag restaurant.url_avatar
             .info-basic-new-restaurant
-              h4= link_to restaurant.name, "#"
+              h4= link_to restaurant.name, restaurant
               .restaurant-address= restaurant.address
               .restautant-time= "#{restaurant.open_time} - #{restaurant.close_time}"

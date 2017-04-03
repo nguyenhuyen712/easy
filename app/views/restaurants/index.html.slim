@@ -8,7 +8,7 @@
               li
                 i.fa.fa-check aria-hidden="true"
                 = link_to "Tất cả", restaurants_path
-              - @category.each do |category|
+              - @categories.each do |category|
                 li
                   i.fa.fa-check aria-hidden="true"
                   = link_to category.name, restaurants_path(category_id: category.id)
@@ -16,8 +16,8 @@
           .sidebar-title
             | Nhà hàng nổi bật
           .hot-restaurants
-            - @hot_restaurant_name.each do |restaurant_name|
-              = link_to restaurant_name, "#"
+            - @hot_restaurants.each do |restaurant|
+              = link_to restaurant.name, restaurant
       .col-sm-7.col-md-9
         .company-detail-wrapper
           .filter-wrapper
@@ -29,7 +29,7 @@
                 .col-md-10.restaurant-content
                   .row
                     .col-sm-7.col-md-8
-                      h4= restaurant.name
+                      h4= link_to restaurant.name, restaurant
                       .meta-div= restaurant.address
                       p.texing= restaurant.description
                     .col-sm-5.col-md-4
@@ -40,7 +40,7 @@
                         li
                           span Đặt tối thiểu:
                           = number_to_currency restaurant.min_order
-                      = link_to "Đặt hàng", "#", class: "btn btn-primary"
+                      = link_to "Đặt hàng", restaurant, class: "btn btn-primary"
                 .clearfix
         .paper-wrapper
           .page-list= paginate @restaurants

@@ -8,6 +8,8 @@ class CreateFoods < ActiveRecord::Migration[5.0]
       t.integer :status
       t.boolean :is_sale
       t.text :description
+      t.string :url_avatar
+      t.integer :category_id
 
       t.timestamps
     end

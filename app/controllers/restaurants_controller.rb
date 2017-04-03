@@ -4,8 +4,12 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = (params[:category_id].present? ? Restaurant.filter_category(params[:category_id]) : Restaurant)
       .order_desc.page(params[:page]).per Settings.restaurants.page_size
-    @category = Category.restaurant.all
-    @hot_restaurant_name = Restaurant.hot_restaurant.limit(Settings.restaurants.hot_restaurant_limit).pluck :name
+    @categories = Category.restaurant.all
+    @hot_restaurants = Restaurant.hot_restaurant.limit(Settings.restaurants.hot_restaurant_limit)
+  end
+
+  def show
+    @restaurant = Restaurant.find_by id: params[:id]
   end
 
   def new
