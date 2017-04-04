@@ -1,5 +1,27 @@
-h1 Quản lý nhà hàng
+h1.mb-20 Quản lý nhà hàng
 = link_to "Thêm nhà hàng mới", new_admin_restaurant_path, class: "btn btn-primary btn-flat"
+.mb-20
+.row
+  .col-xs-12
+    .box
+      .box-header
+        h3.box-title Danh sách nhà hàng đang chờ xử lý
+      .box-body
+        table.table.table-bordered.table-hover
+          thead
+            tr
+              th Số thứ tự
+              th Tên nhà hàng
+              th Chủ nhà hàng
+              th Thao tác
+          tbody
+            - @restaurant_pending.order(created_at: :desc).each_with_index do |restaurant, index|
+              tr
+                td= index + 1
+                td= restaurant.name
+                td= restaurant.manager.name
+                td
+                  = link_to "Chi tiết", admin_restaurant_path(restaurant)
 
 .row
   .col-xs-12
