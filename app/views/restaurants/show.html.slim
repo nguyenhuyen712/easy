@@ -47,11 +47,12 @@
                     - @restaurant.foods.select(:category_id).distinct.each do |food_category|
                       .food-detail
                         i.fa.fa-check
-                        span= link_to food_category.category.name, "#"
+                        span= link_to food_category.category.name, "#category-#{food_category.category_id}"
                       .clearfix
                 .col-xs-6.col-md-7
                   .menu-food
                     - @restaurant.foods.select(:category_id).distinct.each do |food_category|
+                      .category-link id="category-#{food_category.category_id}"
                       h5= food_category.category.name
                       - @restaurant.foods.filter_category(food_category.category_id).each do |food|
                         .order-menu-item
@@ -65,6 +66,26 @@
                           .clearfix
                 .col-xs-3
                   .side-block-order
+                    h5.text-center
+                      i.fa.fa-shopping-basket
+                      span= "Đơn đặt hàng"
+                    .side-block-order-content
+                      ul.order-item-list
+                        / list mon an duoc dat
+                      .order-item-total
+                        p
+                          span.title.col-xs-7= "Cộng: "
+                          span.text-right.col-xs-5
+                        p
+                          span.title.col-xs-7= "Phí vận chuyển: "
+                          span.text-right.col-xs-5= "#{number_to_currency @restaurant.delivery_fee}/km"
+                        .clearfix
+                        p.total-amount
+                          span.title.col-xs-7= "Tạm tính:"
+                          span.text-right.col-xs-5
+                        .clearfix
+                      .checkoutarea
+                        = link_to "Đặt hàng", "#", class: "btn btn-primary btn-block custom-checkout"
             #restaurant_infomation.tab-pane
               | restaurant_infomation
             #promotion.tab-pane
