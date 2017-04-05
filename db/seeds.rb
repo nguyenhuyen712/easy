@@ -1,6 +1,10 @@
 Admin.create email: "admin@gmail.com", password: 123456, password_confirmation: 123456
 
 10.times do |i|
+  Category.create name: "category-food #{i+1}", category_type: :food
+end
+
+10.times do |i|
   category = Category.create name: "category #{i+1}", category_type: :restaurant
   9.times do |j|
     restaurant = Restaurant.create name: "restaurant #{i}#{j+1}",
@@ -9,25 +13,23 @@ Admin.create email: "admin@gmail.com", password: 123456, password_confirmation: 
       open_time: "08:00",
       close_time: "20:00",
       url_avatar: Faker::Avatar.image,
-      status: "opening",
+      status: ["pending", "opening"].sample,
       order_count: "#{i*10 + j}",
       description: Faker::Hipster.paragraph(3, true),
       min_order: 50000,
       min_price: 20000,
-      max_price: 100000
+      max_price: 100000,
+      delivery_fee: 5000
     10.times do |f|
-      category = Category.create name: "category-food #{f+1}", category_type: :food
-      Food.create name: "Food #{f+1}",
+      Food.create name: "Food #{i} #{f+1}",
         price: 20000,
         restaurant_id: restaurant.id,
         status: "sell",
         url_avatar: Faker::Avatar.image,
-        category_id: category.id
+        category_id: Category.food.sample.id
     end
   end
 end
-
-
 
 User.create email: "nguyenmyhuyen@gmail.com",
   password: 123456,
@@ -52,3 +54,7 @@ User.create email: "dohongson@gmail.com",
   address: "Ha noi",
   name: "Đỗ Hồng Sơn",
   confirmed_at: Time.now
+
+Restaurant.opening.sample.update manager_id: 1
+Restaurant.opening.sample.update manager_id: 2
+Restaurant.pending.sample.update manager_id: 3
