@@ -28,24 +28,24 @@
   .row
     .col-xs-4= f.label :min_price, "Khoảng gía (đơn vị: đồng)"
     .col-xs-1.no-padding.text-center Từ
-    .col-xs-2.no-padding= f.number_field :min_price, step: 1000, class: "form-control"
+    .col-xs-2.no-padding= f.number_field :min_price, step: 1000, min: 0, class: "form-control"
     .col-xs-1.no-padding.text-center Đến
-    .col-xs-2.no-padding= f.number_field :max_price, step: 1000, class: "form-control"
+    .col-xs-2.no-padding= f.number_field :max_price, step: 1000, min: 0, class: "form-control"
   br
   .row
     .col-xs-4= f.label :open_time, "Thời gian giao hàng"
     .col-xs-1.no-padding.text-center Từ
-    .col-xs-2.no-padding= f.time_field :open_time, class: "form-control"
+    .col-xs-2.no-padding= f.time_field :open_time, value: @restaurant.open_time, class: "form-control"
     .col-xs-1.no-padding.text-center Đến
-    .col-xs-2.no-padding= f.time_field :close_time, class: "form-control"
+    .col-xs-2.no-padding= f.time_field :close_time, value: @restaurant.close_time, class: "form-control"
   br
   .row
     .col-xs-4= f.label :free_delivery_fee
-    .col-xs-4= f.number_field :free_delivery_fee, step: 1000, class: "form-control"
+    .col-xs-4= f.number_field :free_delivery_fee, step: 1000, min: 0, class: "form-control"
   br
   .row
     .col-xs-4= f.label :delivery_fee, "Chi phí giao hàng (/1km)"
-    .col-xs-4= f.number_field :delivery_fee, step: 1000, class: "form-control"
+    .col-xs-4= f.number_field :delivery_fee, step: 1000, min: 0, class: "form-control"
   br
   .row
     .col-xs-4= f.label :description

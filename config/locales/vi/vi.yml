@@ -30,6 +30,11 @@ vi:
         min_price: Gía thấp nhất
         max_price: Gía lớn nhất
         manager_id: Quản lý nhà hàng
+      food:
+        category_id: Loại món ăn
+        name: Tên món
+        price: Gía
+        description: Mô tả
     models:
       user: người dùng
       category: Danh mục
