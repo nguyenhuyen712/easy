@@ -296,6 +296,42 @@
         background-color: #f5f5f5;
         position: relative;
 
+        .cart-food-name {
+          max-width: 140px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          margin-left: 4px;
+        }
+
+        .update-food {
+          min-width: 32px;
+        }
+
+        a {
+          color: #e7604a;
+          font-weight: 600;
+          text-decoration: none;
+          outline: none;
+
+          &:hover {
+            color: #e7604a;
+          }
+        }
+
+        .cart-food-price {
+          padding-right: 15px;
+        }
+
+        .cart-food-remove {
+          position: absolute;
+          right: 12px;
+        }
+
+        .count {
+          margin: 0 2px;
+        }
+
         h5 {
           padding: 15px 0;
           color: #313131;

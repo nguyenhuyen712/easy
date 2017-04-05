@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20170319094706) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "parent_id"
     t.integer  "category_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

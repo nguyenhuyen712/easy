@@ -60,35 +60,139 @@
                           .pull-left.name-food.col-xs-8
                             h4= food.name
                             span.desc= food.description
-                          .pull-right= link_to "#", class: "btn btn-primary" do
+                          .pull-right= link_to "#", class: "btn btn-primary", id: "chose-food-#{food.id}" do
                             span.price= food.price
                             i.glyphicon.glyphicon-plus-sign
                           .clearfix
+                          javascript:
+                            $(document).ready(function(){
+                              $("#chose-food-#{food.id}").click(function(e){
+                                e.preventDefault();
+                                if(!$("#cart-food-#{food.id}").length) {
+                                  var count = 1;
+                                  $(".order-item-list").append("<li class=\"clearfix cart-food-item\" data-food=\"#{food.id}\" id=\"cart-food-#{food.id}\" data-price=\"#{food.price}\"><div class=\"pull-left\"><div class=\"update-product\"><a class=\"increase-food\" href=\"#\" title=\"Tăng thêm một\"><i class=\"fa fa-plus-circle\"><\/i><\/a><span class=\"count\">1<\/span><a class=\"decrease-food\" href=\"#\" title=\"Gỉam xuống một\"><i class=\"fa fa-minus-circle\"><\/i><\/a><\/div><\/div><div class=\"cart-food-name pull-left\">#{food.name}<\/div><div class=\"cart-food-price pull-right text-spl-color\">#{food.price}<\/div><div class=\"cart-food-remove\"><a class=\"remove-food\" href=\"#\" title=\"Xóa món ăn\"><i class=\"fa fa-trash\"><\/i><\/a><\/div><\/li>"
+                                    );
+                                }
+                                else {
+                                  var count = parseInt($("#cart-food-#{food.id}").find(".count").text());
+                                  count++;
+                                  $("#cart-food-#{food.id}").find(".count").text(count);
+                                  var price = parseInt($("#cart-food-#{food.id}").data("price"));
+                                  $("#cart-food-#{food.id}").find(".cart-food-price").text(count*price);
+                                }
+                                var bill_details = JSON.parse($.cookie("foods"))
+                                var food_id = "#{food.id}";
+                                bill_details[food_id] = count;
+                                $.cookie("foods", JSON.stringify(bill_details));
+                                calcTotalPrice();
+                              })
+                            });
                 .col-xs-3
                   .side-block-order
                     h5.text-center
                       i.fa.fa-shopping-basket
                       span= "Đơn đặt hàng"
                     .side-block-order-content
-                      ul.order-item-list
+                      ul.order-item-list.list-unstyled
+
                         / list mon an duoc dat
+                        - if cookies[:foods]
+                          - JSON.parse(cookies[:foods]).each do |food_id, count|
+                            - if @restaurant.foods.pluck(:id).include? food_id.to_i
+                              - food = Food.find(food_id)
+                              li.clearfix.cart-food-item data-food=food_id data-price=food.price id="cart-food-#{food_id}"
+                                .pull-left
+                                  .update-food
+                                    a title="Tăng thêm một" href="#"
+                                      i.fa.fa-plus-circle
+                                    span.count= count
+                                    a title="Gỉam xuống một" href="#"
+                                      i.fa.fa-minus-circle
+                                .cart-food-name.pull-left= food.name
+                                .cart-food-price.pull-right.text-spl-color= food.price * count
+                                .cart-food-remove
+                                  a title="Xóa món ăn" href="#"
+                                    i.fa.fa-trash
+                        / li.clearfix.cart-food-item
+                        /   .pull-left
+                        /     .update-product
+                        /       a.increase-food title="Tăng thêm một" href="#"
+                        /         i.fa.fa-plus-circle
+                        /       span.count 12
+                        /       a.decrease-food title="Gỉam xuống một" href="#"
+                        /         i.fa.fa-minus-circle
+                        /   .cart-food-name.pull-left Khoai tây chiên
+                        /   .cart-food-price.pull-right.text-spl-color 20000
+                        /   .cart-food-remove
+                        /     a.remove-food title="Xóa món ăn" href="#"
+                        /       i.fa.fa-trash
                       .order-item-total
                         p
-                          span.title.col-xs-7= "Cộng: "
-                          span.text-right.col-xs-5
-                        p
-                          span.title.col-xs-7= "Phí vận chuyển: "
+                          span.title.col-xs-7#delivery_fee Phí vận chuyển:
                           span.text-right.col-xs-5= "#{number_to_currency @restaurant.delivery_fee}/km"
                         .clearfix
                         p.total-amount
                           span.title.col-xs-7= "Tạm tính:"
-                          span.text-right.col-xs-5
+                          span.text-right.col-xs-5#total-price 0
                         .clearfix
                       .checkoutarea
-                        = link_to "Đặt hàng", "#", class: "btn btn-primary btn-block custom-checkout"
+                        = link_to "Đặt hàng", "#", class: "btn btn-primary btn-block custom-checkout", style: "color: #fff"
             #restaurant_infomation.tab-pane
               | restaurant_infomation
             #promotion.tab-pane
               | promotion
             #comment.tab-pane
               | comment
+
+javascript:
+  $(document).ready(function(){
+    calcTotalPrice();
+  });
+
+  if (!!$.cookie("foods")) {
+  } else {
+    $.cookie("foods", JSON.stringify({}));
+  }
+
+  $(".order-item-list").on("click", ".fa-plus-circle", function(e){
+    e.preventDefault();
+    var count = parseInt($(this).parent().next().text());
+    count++;
+    $(this).parent().next().text(count);
+    $li_elm = $(this).parent().parent().parent().parent()
+    var price = $li_elm.data("price");
+    $li_elm.find(".cart-food-price").text(count*price);
+    var bill_details = JSON.parse($.cookie("foods"));
+    bill_details[$li_elm.data("food")] = count;
+    $.cookie("foods", JSON.stringify(bill_details));
+    calcTotalPrice();
+  }).on("click", ".fa-minus-circle", function(e){
+    e.preventDefault();
+    var count = parseInt($(this).parent().prev().text());
+    if(count > 0)
+      count--;
+    $(this).parent().prev().text(count);
+    $li_elm = $(this).parent().parent().parent().parent()
+    var price = $li_elm.data("price");
+    $li_elm.find(".cart-food-price").text(count*price);
+    var bill_details = JSON.parse($.cookie("foods"));
+    bill_details[$li_elm.data("food")] = count;
+    $.cookie("foods", JSON.stringify(bill_details));
+    calcTotalPrice();
+  }).on("click", ".fa-trash", function(e){
+    e.preventDefault();
+    var bill_details = JSON.parse($.cookie("foods"));
+    delete bill_details[$(this).parent().parent().parent().data("food")];
+    $.cookie("foods", JSON.stringify(bill_details));
+    $(this).parent().parent().parent().remove();
+    calcTotalPrice();
+  })
+
+  var calcTotalPrice = function(){
+    var total = 0;
+    $(".cart-food-item").each(function(index, element){
+      var price = parseInt($(this).find(".cart-food-price").text());
+      total += price;
+    })
+    $("#total-price").text(total);
+  }
