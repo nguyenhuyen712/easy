@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20170319094706) do
     t.integer  "ship_price"
     t.integer  "status"
     t.string   "recipient_name"
+    t.string   "recipient_email"
     t.string   "recipient_phone"
     t.string   "recipient_address"
     t.string   "note"

@@ -41,12 +41,17 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def order
+    @order = {name: params[:name], phone: params[:phone], email: params[:email], address: params[:address], note: params[:note], total_delivery_fee: params[:total_delivery_fee]}
+    render :order
+  end
+
   private
   def restaurant_params
     params[:restaurant][:status] = :pending
     params[:restaurant][:manager_id] = current_user.id
     params.require(:restaurant).permit :name, :address, :lat, :long, :min_price,
       :max_price, :open_time, :close_time, :free_delivery_fee, :delivery_fee,
-      :url_avatar, :description, :manager_id, :status, :phone
+      :url_avatar, :description, :manager_id, :status, :phone, :email
   end
 end

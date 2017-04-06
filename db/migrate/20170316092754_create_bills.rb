@@ -7,6 +7,7 @@ class CreateBills < ActiveRecord::Migration[5.0]
       t.integer :ship_price
       t.integer :status
       t.string :recipient_name
+      t.string :recipient_email
       t.string :recipient_phone
       t.string :recipient_address
       t.string :note
