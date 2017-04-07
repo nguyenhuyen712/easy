@@ -1,0 +1,34 @@
+h1 Chi tiết nhà hàng
+.row
+  .col-xs-6.col-xs-offset-3
+    .box
+      .box-body
+        = image_tag(@restaurant.url_avatar, class: "thumb-image")
+        table.col-xs-12.table
+          tr
+            th.col-xs-5 Tên nhà hàng
+            td.col-xs-7= @restaurant.name
+          tr
+            th Quản lý nhà hàng
+            td= @restaurant.manager.name
+          tr
+            th Danh mục
+            td= convert_list_categories @restaurant.restaurant_categories
+          tr
+            th Địa chỉ
+            td= @restaurant.address
+          tr
+            th Điện thoại
+            td= @restaurant.phone
+          tr
+            th Khoảng gía (đơn vị: đồng)
+            td= "#{number_to_currency @restaurant.min_price} ~ #{number_to_currency @restaurant.max_price}"
+          tr
+            th Thời gian giao hàng
+            td= "#{@restaurant.open_time} ~ #{@restaurant.close_time}"
+          tr
+            th Chi phí giao hàng (/1km)
+            td= "#{number_to_currency @restaurant.delivery_fee}/km"
+        .col-xs-6.text-center= link_to "Chấp thuận", confirm_admin_restaurant_path(@restaurant), class: "btn btn-primary"
+        .col-xs-6.text-center= link_to "Xóa", "#", class: "btn btn-danger"
+

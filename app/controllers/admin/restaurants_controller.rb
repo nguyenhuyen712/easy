@@ -3,6 +3,11 @@ class Admin::RestaurantsController < Admin::BaseController
   before_action :restaurant_for_select, except: [:index, :destroy]
 
   def index
+    @restaurant_pending = Restaurant.pending
+    @restaurants = Restaurant.not_pending
+  end
+
+  def show
   end
 
   def new
@@ -37,6 +42,15 @@ class Admin::RestaurantsController < Admin::BaseController
   end
 
   def destroy
+  end
+
+  def confirm
+    if @restaurant.update status: "opening"
+      flash[:success] = "Nhà hàng đã được chấp thuận"
+      redirect_to admin_restaurants_path
+    else
+      flash[:danger] = "Không thể chấp thuận nhà hàng"
+    end
   end
 
   private
