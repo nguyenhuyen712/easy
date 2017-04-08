@@ -58,11 +58,11 @@ class Admin::RestaurantsController < Admin::BaseController
     params[:restaurant][:status] = :opening
     params.require(:restaurant).permit :name, :address, :lat, :long, :min_price,
       :max_price, :open_time, :close_time, :free_delivery_fee, :delivery_fee,
-      :url_avatar, :description, :manager_id, :status, :phone
+      :url_avatar, :description, :manager_id, :status, :phone, :email
   end
 
   def restaurant_for_select
     @restaurant_for_select = User.has_no_restaurant.pluck(:name, :id)
-    @restaurant_for_select << [@restaurant.manager.name, @restaurant.manager.id] unless @restaurant.new_record?
+    @restaurant_for_select << [@restaurant.manager.try(:name), @restaurant.manager.try(:id)] unless @restaurant.new_record?
   end
 end
