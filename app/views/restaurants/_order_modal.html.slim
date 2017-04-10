@@ -42,6 +42,16 @@
                   #map-canvas style="width: 100%; height: 200px;"
               br
               .row
+                .col-xs-4= label_tag :earliest, "Thời gian nhận hàng *"
+                .col-xs-1.no-padding.text-center Từ
+                .col-xs-5.no-padding= datetime_local_field_tag :earliest, "", class: "form-control", required: true
+                br
+                br
+                .col-xs-4
+                .col-xs-1 Đến
+                .col-xs-5.no-padding= datetime_local_field_tag :latest, "", class: "form-control", required: true
+              br
+              .row
                 .col-xs-4
                   = label_tag :note, "Ghi chú"
                 .col-xs-8

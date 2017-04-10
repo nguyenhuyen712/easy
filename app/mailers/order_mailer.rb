@@ -17,14 +17,15 @@ class OrderMailer < ApplicationMailer
     mail to: @restaurant.email, subject: "[Buy online] Có đơn hàng mới"
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.order_mailer.accept_order.subject
-  #
-  def accept_order
-    @greeting = "Hi"
+  def accept_order bill
+    @bill = bill
+    @restaurant = bill.restaurant
+    mail to: bill.recipient_email, subject: "[Buy online] Đơn hàng đưọc chấp nhận"
+  end
 
-    mail to: "to@example.org"
+  def reject_order bill
+    @bill = bill
+    @restaurant = bill.restaurant
+    mail to: bill.recipient_email, subject: "[Buy online] Đơn hàng bị hủy bỏ"
   end
 end

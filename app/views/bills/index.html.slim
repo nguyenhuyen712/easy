@@ -1,0 +1,24 @@
+.section
+  .container
+    .row
+      .col-xs-12
+        h2.text-center Danh sách đơn hàng của bạn
+        br
+        br
+        table.table.data-table
+          thead
+            th STT
+            th Mã đơn hàng
+            th Nhà hàng
+            th Ngày đặt hàng
+            th Trạng thái
+            th
+          tbody
+            - @bills.each_with_index do |bill, index|
+              tr
+                td= index + 1
+                td= bill.bill_code
+                td= bill.restaurant.name
+                td= bill.created_at.strftime("%H:%M %d-%m-%Y")
+                td= t "bill_status.#{bill.status}"
+                td= link_to "Chi tiết", bill

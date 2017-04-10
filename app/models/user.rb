@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :favorite_restaurants, dependent: :destroy
+  has_many :bills
+  has_many :rates, dependent: :destroy
   has_one :restaurant, foreign_key: :manager_id
 
   validates :email, presence: true, length: {maximum: 128}
@@ -15,4 +17,8 @@ class User < ApplicationRecord
 
   scope :has_restaurant, ->{joins :restaurant}
   scope :has_no_restaurant, ->{where.not id: User.has_restaurant}
+
+  def rate restaurant
+    self.rates.find_by restaurant_id: restaurant.id
+  end
 end

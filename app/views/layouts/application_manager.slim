@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
-    title Admin| Buy online
+    title Quản lý nhà hàng| Buy online
     = csrf_meta_tags
     = stylesheet_link_tag "admin/application", media: "all"
     = javascript_include_tag "application"
@@ -42,7 +42,7 @@ html
             li= link_to manager_foods_path do
               i.fa.fa-cutlery
               span Món ăn
-            li= link_to "#" do
+            li= link_to manager_bills_path do
               i.fa.fa-usd
               span Đơn hàng
             li= link_to "#" do

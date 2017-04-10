@@ -1,0 +1,6 @@
+- rating = user_signed_in? && current_user.rate(restaurant) ? current_user.rate(restaurant) : restaurant.rates.build
+= form_for rating, remote: true do |f|
+  #rating-star
+  = f.hidden_field :restaurant_id
+  = f.hidden_field :vote
+  = f.submit "", class: "hidden", id: "vote-submit"

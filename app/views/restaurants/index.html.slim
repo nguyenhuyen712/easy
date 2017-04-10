@@ -1,3 +1,7 @@
+css:
+  .rate-vote {
+    font-size: 15px;
+  }
 .section
   .container
     .row
@@ -32,6 +36,16 @@
                       h4= link_to restaurant.name, restaurant
                       .meta-div= restaurant.address
                       p.texing= restaurant.description
+                      p.pull-left class="rate-#{restaurant.id}"
+                      span.rate-vote= "(#{restaurant.rates.count})"
+                      javascript:
+                        $(document).ready(function(){
+                          $(".rate-#{restaurant.id}").rateYo({
+                            rating: "#{restaurant.calc_rate}",
+                            starWidth: "20px",
+                            readOnly: true
+                          })
+                        });
                     .col-sm-5.col-md-4
                       ul.meta-list
                         li
@@ -44,3 +58,4 @@
                 .clearfix
         .paper-wrapper
           .page-list= paginate @restaurants
+

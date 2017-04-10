@@ -12,10 +12,11 @@
           = link_to t(".select_restaurant"), restaurants_path
           i
             | /
-        li
-          = link_to t(".bill"), "#"
-          i
-            | /
+        - if user_signed_in?
+          li
+            = link_to "Xem đơn hàng", bills_path
+            i
+              | /
         li
           - if user_signed_in? && current_user.restaurant && current_user.restaurant.opening?
             = link_to "Quản lý nhà hàng", manager_root_path

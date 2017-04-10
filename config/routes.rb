@@ -20,16 +20,17 @@ Rails.application.routes.draw do
     root "foods#index"
     resources :restaurants
     resources :foods
+    resources :bills
   end
 
+  resources :bills
   resources :restaurants
+  resources :rates
 
   resources :restaurants do
     post "order", on: :member
     resources :bills
   end
-
-
 
   get "/*page", to: "pages#show"
 end

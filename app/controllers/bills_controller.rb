@@ -18,11 +18,17 @@ class BillsController < ApplicationController
     redirect_to restaurants_path
   end
 
+  def index
+    @bills = current_user.bills.includes(:bill_details)
+  end
+
   private
   def bill_params
+    params[:bill][:user_id] = current_user.id if user_signed_in?
     params[:bill][:bill_code] = "#{params[:restaurant_id]}#{Time.now.to_i}"
     params[:bill][:status] = :pending
     params.require(:bill).permit :restaurant_id, :total, :ship_price, :recipient_name,
-      :recipient_phone, :recipient_email, :recipient_address, :note, :status, :bill_code
+      :recipient_phone, :recipient_email, :recipient_address, :note, :status, :bill_code,
+      :user_id, :earliest, :latest
   end
 end

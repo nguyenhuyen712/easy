@@ -39,7 +39,7 @@ User.create email: "nguyenmyhuyen@gmail.com",
   name: "Nguyễn Mỹ Huyền",
   confirmed_at: Time.now
 
-User.create email: "dogiadat@gmail.com",
+dat = User.create email: "dogiadat@gmail.com",
   password: 123456,
   password_confirmation: 123456,
   phone: "0123456789",
@@ -55,6 +55,11 @@ User.create email: "dohongson@gmail.com",
   name: "Đỗ Hồng Sơn",
   confirmed_at: Time.now
 
-Restaurant.opening.sample.update manager_id: 1
-Restaurant.opening.sample.update manager_id: 2
-Restaurant.pending.sample.update manager_id: 3
+restaurant = Restaurant.create name: "My restaurant", manager_id: dat.id, address: "Keangnam, Hà Nội, Việt Nam", lat: 21.0170303, long: 105.7839017,
+  phone: "0987964276", email: "dogiadat@gmail.com", min_price: 30000, max_price: 300000,
+  delivery_fee: 5000, open_time: "07:30", close_time: "20:30", status: :opening,
+  url_avatar: File.open(File.join(Rails.root, "app/assets/images/images/15.jpg"))
+RestaurantCategory.create restaurant_id: restaurant.id, category_id: Category.first.id
+RestaurantCategory.create restaurant_id: restaurant.id, category_id: Category.last.id
+restaurant.foods.create price: 25000, name: "Món ăn 1", url_avatar: File.open(File.join(Rails.root, "app/assets/images/images/20.jpg")), category_id: Category.first.id
+restaurant.foods.create price: 30000, name: "Món ăn 2", url_avatar: File.open(File.join(Rails.root, "app/assets/images/images/22.jpg")), category_id: Category.last.id
