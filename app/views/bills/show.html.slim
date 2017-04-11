@@ -1,0 +1,32 @@
+.section
+  .container
+    .row
+      .col-xs-12
+        h2.text-center Chi tiết đơn hàng
+        .row
+          .col-xs-6 style="font-size: 15px"
+            p Tên người nhận: #{@bill.recipient_name}
+            p Số điện thoại người nhận: #{@bill.recipient_phone}
+            p Địa chỉ nhận: #{@bill.recipient_address}
+            p Ghi chú: #{@bill.note}
+            p Thời gian nhận hàng: #{@bill.earliest.strftime("%H:%M %d-%m-%Y")} - #{@bill.latest.strftime("%H:%M %d-%m-%Y")}
+          .cleafix
+
+        table.table.table-bordered.table-hover
+          thead
+            th STT
+            th Tên món ăn
+            th Số lượng
+            th Đơn gía
+            th Tổng
+          tbody
+            - @bill.bill_details.each_with_index do |bill_detail, index|
+              tr
+                td= index + 1
+                td= bill_detail.food.name
+                td= bill_detail.amount
+                td= bill_detail.food.price
+                td= bill_detail.quantity
+        p Phí vận chuyển: #{@bill.ship_price} VNĐ
+        p
+          strong Tổng tiền: #{@bill.total} VNĐ

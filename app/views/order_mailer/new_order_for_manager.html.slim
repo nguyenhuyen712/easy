@@ -8,10 +8,12 @@ script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 
       h3.text-center
         strong Thông tin đơn hàng
-      p Người đặt hàng: #{@bill.recipient_name}
+      p Tên người nhận: #{@bill.recipient_name}
       p Số điện thoại người nhận: #{@bill.recipient_phone}
       p Địa chỉ nhận: #{@bill.recipient_address}
       p Ghi chú: #{@bill.note}
+      p Mã đơn hàng: #{@bill.bill_code}
+      p Thời gian nhận hàng: #{@bill.earliest.strftime("%H:%M %d-%m-%Y")} - #{@bill.latest.strftime("%H:%M %d-%m-%Y")}
 
       table.table.table-bordered
         thead

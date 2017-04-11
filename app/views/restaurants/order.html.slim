@@ -13,11 +13,13 @@
             p Số điện thoại:
             p Địa chỉ:
             p Ghi chú:
+            p Thời gian nhận hàng:
           .col-xs-9
             p= @order[:name]
             p= @order[:phone]
             p= @order[:address]
             p= @order[:note]
+            p #{@order[:earliest].strftime("%H:%M %d-%m-%Y")} - #{@order[:latest].strftime("%H:%M %d-%m-%Y")}
       .col-xs-12
         br
         br
@@ -60,4 +62,6 @@
             = f.hidden_field :recipient_email, value: @order[:email]
             = f.hidden_field :recipient_address, value: @order[:address]
             = f.hidden_field :note, value: @order[:note]
+            = f.hidden_field :earliest, value: @order[:earliest]
+            = f.hidden_field :latest, value: @order[:latest]
             = f.submit "Xác nhận", class: "btn btn-danger btn-flat btn-lg"

@@ -11,6 +11,9 @@ class CreateBills < ActiveRecord::Migration[5.0]
       t.string :recipient_phone
       t.string :recipient_address
       t.string :note
+      t.integer :user_id
+      t.datetime :earliest
+      t.datetime :latest
 
       t.timestamps
     end

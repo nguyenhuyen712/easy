@@ -1,0 +1,69 @@
+h1 Quản lý đơn hàng
+br
+.row
+  .col-xs-12
+    .nav-tabs-custom
+      ul.nav.nav-tabs
+        li.active
+          a aria-expanded="true" data-toggle="tab" href="#pending_bills"  Đang chờ
+        li
+          a aria-expanded="false" data-toggle="tab" href="#accepted_bills"  Đã chấp nhận
+        li
+          a aria-expanded="false" data-toggle="tab" href="#rejected_bills"  Đã hủy bỏ
+      .tab-content
+        #pending_bills.tab-pane.active
+          table.table.table-bordered.table-hover.data-table
+            thead
+              th STT
+              th Mã đơn hàng
+              th Tên người nhận
+              th Tổng tiền
+              th Thời gian đặt hàng
+              th
+            tbody
+              - @bills.pending.each_with_index do |bill, index|
+                tr
+                  td= index + 1
+                  td= bill.bill_code
+                  td= bill.recipient_name
+                  td #{bill.total} VNĐ
+                  td= bill.created_at.strftime "%H:%M %d/%m/%Y"
+                  td= link_to "Chi tiết", [:manager, bill]
+        /! /.tab-pane
+        #accepted_bills.tab-pane
+          table.table.table-bordered.table-hover.data-table
+            thead
+              th STT
+              th Mã đơn hàng
+              th Tên người nhận
+              th Tổng tiền
+              th Thời gian đặt hàng
+              th
+            tbody
+              - @bills.accepted.each_with_index do |bill, index|
+                tr
+                  td= index + 1
+                  td= bill.bill_code
+                  td= bill.recipient_name
+                  td #{bill.total} VNĐ
+                  td= bill.created_at.strftime "%H:%M %d/%m/%Y"
+                  td= link_to "Chi tiết", [:manager, bill]
+        /! /.tab-pane
+        #rejected_bills.tab-pane
+          table.table.table-bordered.table-hover.data-table
+            thead
+              th STT
+              th Mã đơn hàng
+              th Tên người nhận
+              th Tổng tiền
+              th Thời gian đặt hàng
+              th
+            tbody
+              - @bills.rejected.each_with_index do |bill, index|
+                tr
+                  td= index + 1
+                  td= bill.bill_code
+                  td= bill.recipient_name
+                  td #{bill.total} VNĐ
+                  td= bill.created_at.strftime "%H:%M %d/%m/%Y"
+                  td= link_to "Chi tiết", [:manager, bill]

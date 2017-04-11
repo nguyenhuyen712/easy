@@ -6,6 +6,7 @@ class Restaurant < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :restaurant_categories, dependent: :destroy
   has_many :bills
+  has_many :rates
   belongs_to :slideshow
   belongs_to :manager, class_name: "User"
 
@@ -21,4 +22,8 @@ class Restaurant < ApplicationRecord
   # validates :name, :address, presence: true, length: {maximum: 128}
   # validates :name, :address, :min_price, :max_price, :open_time, :close_time,
   #   :free_delivery_fee, :delivery_fee, presence: true
+
+  def calc_rate
+    self.rates.present? ? self.rates.sum(:vote).to_f.round(2)/self.rates.count : 0
+  end
 end

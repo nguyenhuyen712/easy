@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
         @restaurant.restaurant_categories.create category_id: category_id
       end
       flash[:success] = "Nhà hàng đưọc thêm mới thành công"
-      redirect_to @restaurant
+      redirect_to :back
     else
       render :new
     end
@@ -42,7 +42,10 @@ class RestaurantsController < ApplicationController
   end
 
   def order
-    @order = {name: params[:name], phone: params[:phone], email: params[:email], address: params[:address], note: params[:note], total_delivery_fee: params[:total_delivery_fee]}
+    @order = {name: params[:name], phone: params[:phone], email: params[:email],
+      address: params[:address], note: params[:note], total_delivery_fee: params[:total_delivery_fee],
+      earliest: Time.zone.parse(params[:earliest]), latest: Time.zone.parse(params[:latest])
+    }
     render :order
   end
 

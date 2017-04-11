@@ -14,5 +14,6 @@ module Easy
     config.time_zone = "Hanoi"
     config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/**/*.{rb,yml}"]
     config.i18n.default_locale = :vi
+    # config.active_record.default_timezone = :local
   end
 end

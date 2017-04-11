@@ -80,3 +80,7 @@ vi:
         significant: false
         strip_insignificant_zeros: false
         unit: "VND"
+  bill_status:
+    pending: Đang chờ
+    accepted: Đã chấp nhận
+    rejected: Bị hủy bỏ
