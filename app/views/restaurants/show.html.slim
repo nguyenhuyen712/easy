@@ -27,7 +27,7 @@ css:
             .col-xs-4.no-padding
               .restaurant-rate
             .col-xs-6.no-padding
-              span.rate-value= @restaurant.rates.count
+              span.rate-value= "#{@restaurant.rates.count} đánh gía"
         .info-delivery-restaurant
           .col-xs-4.column-info-deli
             p.uppercase.light-grey Phí vận chuyển
@@ -141,16 +141,7 @@ css:
               p Đánh gía
               .rating
                 = render "rating_form", restaurant: @restaurant
-                  / select.rating-star
-                  /   option value="1"  1
-                  /   option value="2"  2
-                  /   option value="3"  3
-                  /   option value="4"  4
-                  /   option value="5"  5
-
 = render "order_modal"
-
-
 
 javascript:
   $(document).ready(function(){
@@ -291,10 +282,6 @@ javascript:
           var delivery_fee = results[j].distance.value * #{@restaurant.delivery_fee} / 1000
           $("#total_delivery_fee").val(delivery_fee);
           $("#output").html("Khoảng cách: " + results[j].distance.text + "<br/>Phí vận chuyển: " + delivery_fee + " VNĐ");
-
-          // outputDiv.innerHTML += origins[i] + ' to ' + destinations[j]
-          //   + ': ' + results[j].distance.text + ' in '
-          //   + results[j].duration.text + '<br>';
         }
       }
     }
