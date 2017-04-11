@@ -23,14 +23,15 @@ Rails.application.routes.draw do
     resources :bills
   end
 
-  resources :bills
-  resources :restaurants
-  resources :rates
 
   resources :restaurants do
     post "order", on: :member
     resources :bills
+    resources :comments
   end
 
+  resources :bills
+  resources :restaurants
+  resources :rates
   get "/*page", to: "pages#show"
 end

@@ -39,7 +39,7 @@
                 img.img-responsive[src="http://localhost:3000/assets/images/offer.png" alt=" "]
               .agile_top_brand_left_grid1
                 .image-hot-restaurant
-                  = link_to "#" do
+                  = link_to restaurant do
                     = image_tag restaurant.url_avatar
                 .info-basic-hot-restaurant
                   h4.name-hot-restaurant= link_to restaurant.name, restaurant
@@ -55,7 +55,7 @@
         .col-md-3
           .new-restaurant
             .image
-              = link_to "#" do
+              = link_to restaurant do
                 = image_tag restaurant.url_avatar
             .info-basic-new-restaurant
               h4= link_to restaurant.name, restaurant
