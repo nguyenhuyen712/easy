@@ -27,6 +27,13 @@ $(document).ready(function(){
     }
   });
 
+  $("form.new_comment").submit(function(e){
+    if($(".comment-content").val().length < 8){
+      alert("bạn phải nhập lớn hơn 8 ký tự")
+      return false;
+    }
+  })
+
   $(".dropdown").hover(
     function() {
       $(".dropdown-menu", this).stop( true, true ).slideDown("fast");

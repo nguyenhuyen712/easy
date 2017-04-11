@@ -1,6 +1,15 @@
-css:
+scss:
   .pac-container{z-index:2000 !important;}
   .rate-value {font-size: 28px;}
+  .comment {
+    padding: 15px;
+    background-color: #f5f5f5;
+    margin-top: 8px;
+    .comment-time {
+      color: #848484;
+    }
+  }
+
 .section
   .container
     .info-detail-restaurant
@@ -138,12 +147,39 @@ css:
             #promotion.tab-pane
               | promotion
             #comment.tab-pane
-              p Đánh gía
-              .rating
-                = render "rating_form", restaurant: @restaurant
+              - unless user_signed_in?
+                p Bạn phải #{link_to "đăng nhập", new_user_session_path} để đánh gía và bình luận
+              - else
+                p Đánh gía
+                .rating
+                  = render "rating_form", restaurant: @restaurant
+
+                br
+                h3 Bình luận
+                .row
+                  .col-xs-8
+                    = form_for [@restaurant, current_user.comments.build], remote: true do |f|
+                      = f.text_area :content, placeholder: "Nhập nội dung bình luận vào đây",
+                        class: "form-control comment-content",
+                        onkeyup:"textAreaAdjust(this)", style: "overflow:hidden"
+                      = f.submit "Bình luận", class: "btn btn-danger btn-flat btn-comment", style: "margin-top: 5px;"
+                  .clearfix
+              .row
+                .col-xs-8
+                  hr
+                .clearfix
+                .col-xs-8.comments
+
+                  - @restaurant.comments.order(created_at: :desc).each do |comment|
+                    = render "comment", comment: comment
+
 = render "order_modal"
 
 javascript:
+  function textAreaAdjust(o) {
+    o.style.height = "1px";
+    o.style.height = (25+o.scrollHeight)+"px";
+  }
   $(document).ready(function(){
     $('#map').locationpicker({
       location: {latitude: #{@restaurant.lat}, longitude: #{@restaurant.long}},
@@ -160,7 +196,6 @@ javascript:
       rating: #{@restaurant.calc_rate},
       readOnly: true
     });
-
   });
 
   $(document).on("change", "#destination-address", function(e){

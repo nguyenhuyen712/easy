@@ -84,3 +84,39 @@ vi:
     pending: Đang chờ
     accepted: Đã chấp nhận
     rejected: Bị hủy bỏ
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: khoảng 1 giờ trước
+        other: khoảng %{count} giờ trước
+      about_x_months:
+        one: khoảng 1 tháng trước
+        other: khoảng %{count} tháng trước
+      about_x_years:
+        one: khoảng 1 năm trước
+        other: khoảng %{count} năm trước
+      almost_x_years:
+        one: gần 1 năm
+        other: gần %{count} năm
+      half_a_minute: 30 giây trước
+      less_than_x_minutes:
+        one: chưa tới 1 phút trước
+        other: chưa tới %{count} phút trước
+      less_than_x_seconds:
+        one: chưa tới 1 giây
+        other: chưa tới %{count} giây
+      over_x_years:
+        one: hơn 1 năm trước
+        other: hơn %{count} năm trước
+      x_days:
+        one: 1 ngày trước
+        other: "%{count} ngày trước"
+      x_minutes:
+        one: 1 phút trưóc
+        other: "%{count} phút trước"
+      x_months:
+        one: 1 tháng trước
+        other: "%{count} tháng trước"
+      x_seconds:
+        one: 1 giây
+        other: "%{count} giây trước"
