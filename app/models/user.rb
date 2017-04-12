@@ -18,6 +18,8 @@ class User < ApplicationRecord
   scope :has_restaurant, ->{joins :restaurant}
   scope :has_no_restaurant, ->{where.not id: User.has_restaurant}
 
+  mount_uploader :avatar, ImageUploader
+
   def rate restaurant
     self.rates.find_by restaurant_id: restaurant.id
   end

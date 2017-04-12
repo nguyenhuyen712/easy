@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     resources :bills
   end
 
-
   resources :restaurants do
     post "order", on: :member
     resources :bills

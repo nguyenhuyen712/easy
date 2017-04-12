@@ -94,4 +94,8 @@ $(document).ready(function(){
       alert("Trình duyệt không hỗ trợ đọc file");
     }
   });
+
+  $(".user-menu").on("click", "li", function(){
+     $(this).addClass("active").siblings().removeClass("active");
+  });
 });
