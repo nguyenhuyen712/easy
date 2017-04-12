@@ -1,0 +1,39 @@
+.section
+  .container
+    .row
+      .col-sm-5.col-md-3
+        = render "users/user_menu"
+      .col-sm-7.col-md-9
+        .user-content-wrapper
+          .user-title
+            h2 Thông tin cá nhân
+          .row
+            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+              .col-md-9.col-xs-12
+                = devise_error_messages!
+                .form-group.clearfix
+                  .col-md-3= f.label :name, class: "label"
+                  .col-md-9.col-xs-12= f.text_field :name, class: "form-control", required: true
+                .form-group.clearfix
+                  .col-md-3= f.label :address, class: "label"
+                  .col-md-9.col-xs-12= f.text_field :address, class: "form-control", required: true
+                .form-group.clearfix
+                  .col-md-3= f.label :phone, class: "label"
+                  .col-md-9.col-xs-12= f.text_field :phone, class: "form-control", required: true
+                .form-group.clearfix
+                  .col-md-3= f.label :avatar, class: "label"
+                  .col-md-9.col-xs-12= f.file_field :avatar, class: "form-control avatar-input"
+                .form-group.clearfix
+                  .col-md-3= f.label :password, class: "label"
+                  .col-md-9.col-xs-12
+                    = f.password_field :password, class: "form-control"
+                    - if @minimum_password_length
+                      .notice-password= "Mật khẩu có ít nhất #{@minimum_password_length} kí tự (bỏ trống nếu không muốn thay đổi)"
+                .form-group.clearfix
+                  .col-md-3= f.label :password_confirmation, class: "label"
+                  .col-md-9.col-xs-12= f.password_field :password_confirmation, class: "form-control"
+                .form-group.clearfix
+                  .col-md-3= f.label :current_password, class: "label"
+                  .col-md-9.col-xs-12= f.password_field :current_password, class: "form-control", required: true
+                .col-xs-12.submit-btn
+                  = f.submit yield: :submit, class: "btn btn-primary"

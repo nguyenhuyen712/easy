@@ -3,11 +3,11 @@ vi:
     attributes:
       user:
         email: Địa chỉ email
-        current_password: mật khẩu hiện tại
+        current_password: Mật khẩu hiện tại
         password: Mật khẩu
         password_confirmation: Mật khẩu xác thực
         confirmation_token: confirmation token
-        new_password: mật khẩu mới
+        new_password: Mật khẩu mới
         phone: Điện thoại
         address: Địa chỉ
         name: Tên

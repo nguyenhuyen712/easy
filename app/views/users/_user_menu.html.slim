@@ -1,0 +1,18 @@
+.user-sidebar
+  .user-item
+    .image
+      = current_user.avatar? ? image_tag(current_user.avatar) : image_tag("default.jpg")
+    h4= current_user.name
+  ul.user-menu
+    li.active
+      = link_to edit_user_registration_path do
+        i.fa.fa-user
+        | Thông tin cá nhân
+    li
+      = link_to "#" do
+        i.fa.fa-bookmark
+        | Nhà hàng yêu thích
+    li
+      = link_to bills_path do
+        i.fa.fa-history
+        | Lịch sử đặt hàng
