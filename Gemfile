@@ -61,12 +61,12 @@ group :development do
 end
 
 group :staging, :production do
-  gem 'unicorn'
-  gem 'unicorn-worker-killer'
-  gem 'capistrano'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
+  gem "unicorn"
+  gem "unicorn-worker-killer"
+  gem "capistrano"
+  gem "capistrano-rbenv"
+  gem "capistrano-bundler"
+  gem "capistrano-rails"
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -85,3 +85,8 @@ gem "select2-rails"
 gem "carrierwave"
 gem "mini_magick"
 gem "fog"
+gem "dotenv-rails"
+gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
+gem "social-share-button"
+

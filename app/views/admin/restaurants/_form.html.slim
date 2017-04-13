@@ -22,8 +22,8 @@
     .col-xs-8= f.text_field :address, class: "form-control", id: "restaurant-address", required: true
     br
     br
-    .col-xs-6.col-xs-offset-4
-      #restaurant-map style="width: 400px; height: 200px"
+    .col-xs-8.col-xs-offset-4
+      #restaurant-map style="width: 100%; height: 200px"
     = f.hidden_field :lat, id: "restaurant-lat"
     = f.hidden_field :long, id: "restaurant-long"
   br

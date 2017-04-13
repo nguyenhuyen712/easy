@@ -23,6 +23,17 @@
       div
       .form
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .signup-omniauth
+            - resource_class.omniauth_providers.each do |provider|
+              =link_to omniauth_authorize_path(resource_name, provider), class: "signup-#{provider}-btn signup-btn btn"
+                = image_tag "#{provider}-btn.png"
+                | Đăng nhập
+            .col-xs-12
+              .col-xs-3
+                hr
+              .col-xs-5.text-center bằng email
+              .col-xs-3
+                hr
           .errors= devise_error_messages!
           = f.email_field :email, autofocus: true, placeholder: "Địa chỉ email"
           = f.password_field :password, autocomplete: "off", placeholder: "Mật khẩu"

@@ -18,6 +18,7 @@
 //= require dataTables/jquery.dataTables
 //= require select2-full
 //= require select2_locale_vi
+//= require social-share-button
 //= require_tree .
 
 $(document).ready(function(){

@@ -131,5 +131,36 @@
       height: auto;
       display: block;
     }
+
+.signup-omniauth{
+  text-align: center;
+
+  .signup-facebook-btn {
+    background-color: #3A5897;
+  }
+
+  @media (min-width:767px) {
+    .signup-facebook-btn {
+      margin-right: 15px;
+    }
+  }
+
+  .signup-google_oauth2-btn {
+    background-color: #DA4835;
+  }
+
+  .signup-btn {
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 150px;
+    img {
+      width: 18px;
+      margin: 0 5px;
+    }
+  }
+
+  a, a:hover, a:active {
+    color: #fff;
+    font-size: 13px;
   }
 }
